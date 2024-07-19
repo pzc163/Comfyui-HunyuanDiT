@@ -1,6 +1,6 @@
-# comfyui-hydit
-The ComfyUI code is under review in the official repository. Meanwhile, a temporary version is available below for immediate community use.
-We welcome users to try our workflow and appreciate any inquiries or suggestions.
+#Comfyui-HunyuanDiT
+The ComfyUI code is a comfyui-hydit modified notes just for apply for Windows user with "aaaki" ComfyUI starter.
+This node was test in python=3.10 torch=2.1.2 cuda-version=12.1 main environment.
 
 
 ## Overview
@@ -27,22 +27,11 @@ We welcome users to try our workflow and appreciate any inquiries or suggestions
 
 1. Official ComfyUI Environment Setup
 ```shell
-# Please use python 3.10 version with cuda 11.7
-conda create --name comfyui-hydit python=3.10
-conda activate comfyui-hydit
-
-# Download comfyui code
-git clone https://github.com/comfyanonymous/ComfyUI.git
-cd ${ComfyUI}
-git reset --hard 90389b3b8a69c08c3ed0bcc9d87a92246578a8e3
-
-# Install torch, torchvision, torchaudio
-pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117 --default-timeout=100 future
+# Please use python 3.10 version with cuda 12.1
 
 # Install Comfyui essential python package
 pip install -r requirements.txt
 ```
-
 2. HunyuanDiT Environment Setup in ComfyUI
 ```shell
 # Move to the ComfyUI custom_nodes folder and copy comfyui-hydit folder from HunyuanDiT Repo.
@@ -94,6 +83,9 @@ python main.py --listen --port 80
     huggingface-cli download Tencent-Hunyuan/Distillation-v1.2 pytorch_model_distill.pt --local-dir ${ComfyUI}/models/checkpoints/
     ```
     Put module weights trained through Kohya or the official script in `${ComfyUI}/models/checkpoints/` to switch model weights in ComfyUI.
+
+    You can also download weights from Baiducloud download link : https://pan.baidu.com/s/1UT57mVz5nr-BkgGJX-OmDw?pwd=qs8o 
+    提取码：qs8o 
 
 2. Preparing LoRa Weights
 
