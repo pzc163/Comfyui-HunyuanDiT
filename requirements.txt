@@ -1,7 +1,5 @@
 --extra-index-url https://pypi.ngc.nvidia.com
 --extra-index-url https://download.pytorch.org/whl/cu121
-torch==2.3.1
-torchvision==0.18.1
 timm==1.0.3
 diffusers>=0.21.2
 peft==0.10.0
