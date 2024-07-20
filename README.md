@@ -1,4 +1,4 @@
-#Comfyui-HunyuanDiT
+# Comfyui-HunyuanDiT
 <<<<<<< HEAD
 
 =======
@@ -18,8 +18,8 @@ This node was test in python=3.10 torch=2.1.2 cuda-version=12.1 main environment
 - [HunyuanDiT-v1.2](workflow/workflow_v1.2_lora.json)
 ![Workflow](img/workflow_v1.2_lora.png)
 
-- [HunyuanDiT-v1.1](workflow/workflow_v1.1_lora.json)
-![Workflow](img/workflow_v1.1_lora.png)
+- [HunyuanDiT-vs-Kolors](workflow/HunyuanDIT_VS_Kolors.json)
+![Workflow](img/Kolors VS HunyuanDIT.png)
 
 ### Diffusers Wrapper
 - [HunyuanDiT-v1.1-diffusers](workflow/workflow_lora_controlnet.json)
@@ -38,12 +38,9 @@ pip install -r requirements.txt
 ```
 2. HunyuanDiT Environment Setup in ComfyUI
 ```shell
-# Move to the ComfyUI custom_nodes folder and copy comfyui-hydit folder from HunyuanDiT Repo.
+# Move to the ComfyUI custom_nodes folder and copy Comfyui-HunyuanDiT folder from HunyuanDiT Repo.
 cd ${ComfyUI}/custom_nodes
-git clone https://github.com/Tencent/HunyuanDiT.git
-cp -r HunyuanDiT/comfyui-hydit ./
-rm -rf HunyuanDiT
-cd ${ComfyUI}/custom_nodes/comfyui-hydit
+git clone https://github.com/pzc163/Comfyui-HunyuanDiT.git
 
 # Install some essential python Package.
 pip install -r requirements.txt
@@ -52,21 +49,14 @@ pip install -r requirements.txt
 3. (Optional) Deployment on Windows environment
 ```shell
 cd ${ComfyUI}/custom_nodes
-git clone https://github.com/Tencent/HunyuanDiT.git
-xcopy /E /I HunyuanDiT\comfyui-hydit comfyui-hydit
+git clone https://github.com/pzc163/Comfyui-HunyuanDiT.git
+xcopy /E /I HunyuanDiT\Comfyui-HunyuanDiT Comfyui-HunyuanDiT
 rmdir /S /Q HunyuanDiT
-cd ${ComfyUI}/custom_nodes/comfyui-hydit
+cd ${ComfyUI}/custom_nodes/Comfyui-HunyuanDiT
 # Install some essential python Package.
 pip install -r requirements.txt
 ```
 
-4. Running ComfyUI successfully
-```shell
-# Go to ComfyUI main folder
-cd ${ComfyUI}
-# Run the ComfyUI Lauch command
-python main.py --listen --port 80
-```
 
 ### Standard workflow (Recommended)
 
@@ -184,8 +174,4 @@ Below I'm trying to document all the nodes, thanks for some good work[[1]](#1)[[
 
 ## Reference 
 <a id="1">[1]</a> 
-https://github.com/Limitex/ComfyUI-Diffusers  
-<a id="2">[2]</a>
-https://github.com/Tencent/HunyuanDiT/pull/59  
-<a id="3">[3]</a>
-https://github.com/city96/ComfyUI_ExtraModels.git
+https://github.com/Tencent/HunyuanDiT/tree/main/comfyui-hydit

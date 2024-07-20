@@ -1,0 +1,1048 @@
+{
+  "last_node_id": 59,
+  "last_link_id": 42,
+  "nodes": [
+    {
+      "id": 29,
+      "type": "PreviewImage",
+      "pos": [
+        362,
+        104
+      ],
+      "size": {
+        "0": 703.9150390625,
+        "1": 541.449951171875
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5,
+          "label": "图像"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 32,
+      "type": "DiffusersVAELoader",
+      "pos": [
+        -34,
+        202
+      ],
+      "size": {
+        "0": 320.36810302734375,
+        "1": 88.52045440673828
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            7
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "VAE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DiffusersVAELoader"
+      },
+      "widgets_values": [
+        "HunyuanDiT_v1.2_t2i_vae.bin"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "KSampler",
+      "pos": [
+        -31,
+        329
+      ],
+      "size": {
+        "0": 315,
+        "1": 474
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 12,
+          "slot_index": 0,
+          "label": "模型"
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 1,
+          "label": "正面条件"
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 2,
+          "label": "负面条件"
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 3,
+          "label": "Latent"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            4
+          ],
+          "shape": 3,
+          "label": "Latent"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        53,
+        "fixed",
+        30,
+        6,
+        "dpmpp_2m_sde",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 28,
+      "type": "VAEDecode",
+      "pos": [
+        61,
+        60
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 4,
+          "label": "Latent"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 7,
+          "label": "VAE"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            5
+          ],
+          "shape": 3,
+          "label": "图像"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 33,
+      "type": "DiffusersCLIPLoader",
+      "pos": [
+        -923,
+        455
+      ],
+      "size": {
+        "0": 341.10321044921875,
+        "1": 82
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            11
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "CLIP"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DiffusersCLIPLoader"
+      },
+      "widgets_values": [
+        "HunyuanDiT_v1.2_t2i_clip_text_encoder_fp16_pruned.bin",
+        "HunyuanDit_v1.2_t2i_mt5_fp16_pruned.bin"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "DiffusersCheckpointLoader",
+      "pos": [
+        -919,
+        234
+      ],
+      "size": {
+        "0": 347.47760009765625,
+        "1": 104.13386535644531
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DiffusersCheckpointLoader"
+      },
+      "widgets_values": [
+        "HunyuanDiT\\pytorch_model_distill.pt",
+        "v1.2"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "PreviewImage",
+      "pos": [
+        387,
+        1003
+      ],
+      "size": {
+        "0": 724.3712158203125,
+        "1": 542.7650756835938
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 15,
+          "label": "图像"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 34,
+      "type": "LoraLoader",
+      "pos": [
+        -449,
+        10
+      ],
+      "size": {
+        "0": 406.2501220703125,
+        "1": 126
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 10,
+          "label": "模型"
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 11,
+          "label": "CLIP"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            12
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "模型"
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            22,
+            37
+          ],
+          "shape": 3,
+          "slot_index": 1,
+          "label": "CLIP"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "HunyuanDIT\\hunyuan_miniplanet_model_kohya.safetensors",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 25,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -365,
+        216
+      ],
+      "size": {
+        "0": 273.3824157714844,
+        "1": 81.7527084350586
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 22,
+          "label": "CLIP"
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 21,
+          "widget": {
+            "name": "text"
+          },
+          "label": "文本"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            1
+          ],
+          "shape": 3,
+          "label": "条件"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "玉石风格，一只猫在捉蝴蝶"
+      ]
+    },
+    {
+      "id": 54,
+      "type": "MZ_KolorsUNETLoaderV2",
+      "pos": [
+        -946,
+        1012
+      ],
+      "size": {
+        "0": 416.90142822265625,
+        "1": 74.66097259521484
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            35
+          ],
+          "shape": 3,
+          "label": "model",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_KolorsUNETLoaderV2"
+      },
+      "widgets_values": [
+        "kolors\\kolors-unet.safetensors"
+      ]
+    },
+    {
+      "id": 37,
+      "type": "VAEDecode",
+      "pos": [
+        81,
+        1467
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 34,
+          "label": "Latent",
+          "slot_index": 0
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 17,
+          "slot_index": 1,
+          "label": "VAE"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "图像"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 38,
+      "type": "VAELoader",
+      "pos": [
+        -409,
+        1471
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            17
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "sdxl-vae-fp16-fix.safetensors"
+      ]
+    },
+    {
+      "id": 58,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -414,
+        1264
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            38
+          ],
+          "shape": 3,
+          "label": "Latent",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 27,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -468,
+        622
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            3
+          ],
+          "shape": 3,
+          "label": "Latent"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 26,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -493,
+        440
+      ],
+      "size": {
+        "0": 357.36932373046875,
+        "1": 92.81657409667969
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 37,
+          "label": "CLIP"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            2
+          ],
+          "shape": 3,
+          "label": "条件",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "错误的眼睛，糟糕的人脸，毁容，糟糕的艺术，变形，多余的肢体，模糊的颜色，模糊，重复，病态，残缺，"
+      ]
+    },
+    {
+      "id": 55,
+      "type": "MZ_ChatGLM3Loader",
+      "pos": [
+        -926,
+        1205
+      ],
+      "size": {
+        "0": 356.1134338378906,
+        "1": 85.65049743652344
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "chatglm3_model",
+          "type": "CHATGLM3MODEL",
+          "links": [
+            32,
+            39
+          ],
+          "shape": 3,
+          "label": "chatglm3_model",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_ChatGLM3Loader"
+      },
+      "widgets_values": [
+        "GLM3\\chatglm3-8bit.safetensors"
+      ]
+    },
+    {
+      "id": 57,
+      "type": "KSampler",
+      "pos": [
+        3,
+        1013
+      ],
+      "size": [
+        315,
+        474
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 35,
+          "label": "模型"
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 42,
+          "label": "正面条件"
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 41,
+          "label": "负面条件"
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 38,
+          "label": "Latent"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "label": "Latent"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        945197194750813,
+        "randomize",
+        20,
+        8,
+        "dpmpp_2m",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 56,
+      "type": "MZ_ChatGLM3_V2",
+      "pos": [
+        -419,
+        1052
+      ],
+      "size": {
+        "0": 328.8868713378906,
+        "1": 80.20006561279297
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "chatglm3_model",
+          "type": "CHATGLM3MODEL",
+          "link": 32,
+          "label": "chatglm3_model"
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 31,
+          "widget": {
+            "name": "text"
+          },
+          "label": "text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            42
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_ChatGLM3_V2"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 59,
+      "type": "MZ_ChatGLM3_V2",
+      "pos": [
+        -405,
+        1197
+      ],
+      "size": [
+        313.96537146624473,
+        112.4436405618917
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "chatglm3_model",
+          "type": "CHATGLM3MODEL",
+          "link": 39,
+          "label": "chatglm3_model"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            41
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_ChatGLM3_V2"
+      },
+      "widgets_values": [
+        "错误的眼睛，糟糕的人脸，毁容，糟糕的艺术，变形，多余的肢体，模糊的颜色，模糊，重复，病态，残缺，"
+      ]
+    },
+    {
+      "id": 43,
+      "type": "TextInput_",
+      "pos": [
+        -1389,
+        570
+      ],
+      "size": {
+        "0": 376.34344482421875,
+        "1": 107.17606353759766
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            21,
+            31
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextInput_"
+      },
+      "widgets_values": [
+        "孙悟空从石头缝里面蹦出来，近景，实景拍摄，8K"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      25,
+      0,
+      24,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      2,
+      26,
+      0,
+      24,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      3,
+      27,
+      0,
+      24,
+      3,
+      "LATENT"
+    ],
+    [
+      4,
+      24,
+      0,
+      28,
+      0,
+      "LATENT"
+    ],
+    [
+      5,
+      28,
+      0,
+      29,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      32,
+      0,
+      28,
+      1,
+      "VAE"
+    ],
+    [
+      10,
+      31,
+      0,
+      34,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      33,
+      0,
+      34,
+      1,
+      "CLIP"
+    ],
+    [
+      12,
+      34,
+      0,
+      24,
+      0,
+      "MODEL"
+    ],
+    [
+      15,
+      37,
+      0,
+      35,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      38,
+      0,
+      37,
+      1,
+      "VAE"
+    ],
+    [
+      21,
+      43,
+      0,
+      25,
+      1,
+      "STRING"
+    ],
+    [
+      22,
+      34,
+      1,
+      25,
+      0,
+      "CLIP"
+    ],
+    [
+      31,
+      43,
+      0,
+      56,
+      1,
+      "STRING"
+    ],
+    [
+      32,
+      55,
+      0,
+      56,
+      0,
+      "CHATGLM3MODEL"
+    ],
+    [
+      34,
+      57,
+      0,
+      37,
+      0,
+      "LATENT"
+    ],
+    [
+      35,
+      54,
+      0,
+      57,
+      0,
+      "MODEL"
+    ],
+    [
+      37,
+      34,
+      1,
+      26,
+      0,
+      "CLIP"
+    ],
+    [
+      38,
+      58,
+      0,
+      57,
+      3,
+      "LATENT"
+    ],
+    [
+      39,
+      55,
+      0,
+      59,
+      0,
+      "CHATGLM3MODEL"
+    ],
+    [
+      41,
+      59,
+      0,
+      57,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      42,
+      56,
+      0,
+      57,
+      1,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "HunyuanDIT",
+      "bounding": [
+        -970,
+        -157,
+        2150,
+        990
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Kolors",
+      "bounding": [
+        -967,
+        901,
+        2148,
+        739
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5445000000000009,
+      "offset": {
+        "0": 2283.5284246167985,
+        "1": 147.92948257868898
+      }
+    },
+    "workspace_info": {
+      "id": "_voQV4y91C-6NsEOpPS1-",
+      "saveLock": false,
+      "cloudID": null,
+      "coverMediaPath": null
+    }
+  },
+  "version": 0.4
+}
