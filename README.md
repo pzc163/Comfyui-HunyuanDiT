@@ -1,5 +1,8 @@
 #Comfyui-HunyuanDiT
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a9de0c6df98fe2f4f41340bb78343d3b1f9761b
 The ComfyUI code is a comfyui-hydit modified notes just for apply for Windows user with "aaaki" ComfyUI starter.
 This node was test in python=3.10 torch=2.1.2 cuda-version=12.1 main environment.
 
